@@ -3,7 +3,7 @@ const express = require('express');
 const app = express ();
 app.use(express.json());
 
-app.get("/api", (req, res) => {
+app.get("/user", (req, res) => {
     const {slack_name, track} = req.query;
 
 
@@ -31,8 +31,7 @@ res.json({
 
 })
 const port = process.env.PORT || 3000;
-const hostname = 'example.com';
 
 app.listen(port, () => {
-    console.log(`Server Listening on ${hostname}: ${port}`);
+    console.log(`Server Listening on: ${port}`);
   });
