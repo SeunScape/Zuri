@@ -7,9 +7,10 @@ app.get("/api", (req, res) => {
     const {slack_name, track} = req.query;
 
 
-const todaysDate = new Date ();
-const currentDay = todaysDate.toLocaleDateString('en-US', { weekday: 'long' });
-const utcTime = todaysDate.toISOString();
+const currentDate = new Date();
+const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+// const utcTime = currentDate.toISOString();
+const formattedDate = currentDate.toISOString().slice(0, 19) + "Z";
 const githubFileUrl = "https://github.com/SeunScape/";
 const githubRepoUrl = "https://github.com/SeunScape/Zuri";
 
@@ -22,7 +23,7 @@ if (!slack_name || !track) {
 res.json({
     slack_name,
     "current_day": currentDay,
-    "utc_time": utcTime,
+    "utc_time": formattedDate,
     track,
     "github_file_url": githubFileUrl,
     "github_repo_url": githubRepoUrl,
