@@ -10,7 +10,8 @@ app.get("/api", (req, res) => {
 const currentDate = new Date();
 const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
 // const utcTime = currentDate.toISOString();
-const formattedDate = currentDate.toISOString().slice(0, 19);
+const utcTime = now.toISOString().slice(0, 19) + 'Z';
+currentDate.toISOString().slice(0, 19) + "Z";
 const githubFileUrl = "https://github.com/SeunScape/";
 const githubRepoUrl = "https://github.com/SeunScape/Zuri";
 
@@ -23,7 +24,7 @@ if (!slack_name || !track) {
 res.json({
     slack_name,
     "current_day": currentDay,
-    "utc_time": formattedDate,
+    "utc_time": utcTime,
     track,
     "github_file_url": githubFileUrl,
     "github_repo_url": githubRepoUrl,
